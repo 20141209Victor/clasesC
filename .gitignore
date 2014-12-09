@@ -1,0 +1,11 @@
+*.exe
+
+*Debug/
+*.suo
+*.ncb
+
+*build/
+*dist/
+*nbproject/private/
+
+*Thumbs.db
