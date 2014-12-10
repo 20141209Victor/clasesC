@@ -11,11 +11,11 @@ int main() {
     printf("Introduce una palabra: \n");
     gets(texto2); 
 	
-	for(int i = 0; i < strlen(texto); i++)
-	{
+	for(i = 0; i < strlen(texto2); i++) {
 		texto[i] = toupper(texto2[i]);
 	}
-   	
+	texto[i] = '\0';
+
 	for(i = 0; i<strlen(texto); i++){
 		textoNuevo[i] = texto[ (strlen(texto)-1) -i ];
 	}
@@ -27,13 +27,13 @@ int main() {
 	if ( !strcmp(texto, textoNuevo) ) {
 		printf("\nLa palabra es un palindromo.\n");
 	}
-	else{
+	else {
 		printf("\nLa palabra NO es un palindromo.\n");
 	}
 	
-	printf("\n Introduce envio: \n");
-//getchar();
-    getchar();
+	// printf("\n Introduce envio: \n");
+// //getchar();
+    // getchar();
 
 	return 0; 
 }
