@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         letras[i-'a'] = 0;
     }
     
-    printf("introducir texto. ctrl+z para terminar\n");
+    printf("introducir texto. ctrl+d para terminar\n");
     
     while( (catacterIntroducido = tolower(getchar()) ) != EOF ) {
         if( catacterIntroducido >= 'a' && catacterIntroducido <='z') {
