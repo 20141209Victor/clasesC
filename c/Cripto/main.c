@@ -12,20 +12,17 @@
  * 
  */
 int main(int argc, char** argv) {
-    char z;
-    int num = ('k'-'a');
+    char caracter;
+    char num = ('k'-'a');
     
-    while( (z = getchar()) != EOF ) {
-        if( z >= 'a' && z <= 'z') {
-            z = z + num;
-            if(z > 'z'){
-                z = z -'z' +'a';
+    while( (caracter = getchar()) != EOF ) {
+        if( caracter >= 'a' && caracter <= 'z') {
+            caracter = caracter + num;
+            if(caracter > 'z'){
+                caracter = (caracter - 'z' + 'a' - (char)1) ;
             }
-            putchar(z);
         }
-        else {
-            putchar(z);
-        }
+        putchar(caracter);
     }
     
     return (EXIT_SUCCESS);
