@@ -1,0 +1,11 @@
+C:\Users\Victor\AppData\Local\Temp
+
+md5deep64.exe -r C:\Users\Victor\AppData\Local\Temp
+md5deep64.exe -r C:\Users\Victor\AppData\Local\Temp > lista1.txt
+sort < lista1.txt
+sort < lista1.txt > lista1_ord.txt
+
+
+
+
+
