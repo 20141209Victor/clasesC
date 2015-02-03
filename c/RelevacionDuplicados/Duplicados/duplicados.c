@@ -25,7 +25,15 @@ int main(int argc, char** argv) {
         sscanf(lineaAnterior, "%s", codigoAnterior);
         gets(lineaActual);
         sscanf(lineaActual, "%s", codigoActual);
-    } while();
+        if( strcmp(codigoAnterior, codigoActual) == 0 ) {
+            putchar('\t');
+            puts(lineaActual);
+        }
+        else {
+            puts(lineaActual);
+        }
+        strcpy(lineaAnterior, lineaActual);
+    } while( feof(stdin) == 0 );
 
     return (EXIT_SUCCESS);
 }

@@ -1,11 +1,14 @@
 C:\Users\Victor\AppData\Local\Temp
 
-md5deep64.exe -r C:\Users\Victor\AppData\Local\Temp
+	md5deep64.exe -r C:\Users\Victor\AppData\Local\Temp
 md5deep64.exe -r C:\Users\Victor\AppData\Local\Temp > lista1.txt
-sort < lista1.txt
+	sort < lista1.txt
 sort < lista1.txt > lista1_ord.txt
+duplicados.exe < lista1_ord.txt > lista1_ord_dup.txt
 
 
+para juntar las 3 operaciones en 1 sola y evitar el recurso a ficheros temporales
 
+md5deep64.exe -r C:\Users\Victor\AppData\Local\Temp | sort | duplicados.exe > duplicados.txt
 
 
