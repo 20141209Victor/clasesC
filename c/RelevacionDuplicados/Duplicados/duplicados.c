@@ -17,6 +17,8 @@ int main(int argc, char** argv) {
     char lineaAnterior[160];
     char codigoActual[33];
     char codigoAnterior[33];
+    int duplicados = 0;
+    
     
     gets(lineaAnterior);
     puts(lineaAnterior);
@@ -28,12 +30,15 @@ int main(int argc, char** argv) {
         if( strcmp(codigoAnterior, codigoActual) == 0 ) {
             putchar('\t');
             puts(lineaActual);
+            duplicados++; // es un atajo para escribir "duplicados = duplicados + 1", tambien se puede escribir "duplicados += 1" 
         }
         else {
             puts(lineaActual);
         }
         strcpy(lineaAnterior, lineaActual);
     } while( feof(stdin) == 0 );
+    
+    printf("\r\n\r\nse han encontrado %d duplicados.\n", duplicados);
 
     return (EXIT_SUCCESS);
 }

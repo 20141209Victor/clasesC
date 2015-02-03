@@ -1,0 +1,13 @@
+3d67c819c779dffb75dc5a96c4dae9b6  C:\Users\Victor\AppData\Local\Temp\uigesture680267207811224465.html
+b4069f913558e148fa7c76f27c83be35  C:\Users\Victor\AppData\Local\Temp\output1422977913331
+be4af164563b8af31da75b368704df63  C:\Users\Victor\AppData\Local\Temp\~C44C.tmp
+	be4af164563b8af31da75b368704df63  C:\Users\Victor\AppData\Local\Temp\~ED42.tmp
+d41d8cd98f00b204e9800998ecf8427e  C:\Users\Victor\AppData\Local\Temp\dlight_Victor\21b69025\env
+	d41d8cd98f00b204e9800998ecf8427e  C:\Users\Victor\AppData\Local\Temp\FXSAPIDebugLogFile.txt
+	d41d8cd98f00b204e9800998ecf8427e  C:\Users\Victor\AppData\Local\Temp\output1422978231302
+	d41d8cd98f00b204e9800998ecf8427e  C:\Users\Victor\AppData\Local\Temp\xyz4950512847233433785.c
+dfc71a2a9fc7de9754329789272bc3de  C:\Users\Victor\AppData\Local\Temp\dlight_Victor\21b69025\0640791818\pty
+	dfc71a2a9fc7de9754329789272bc3de  C:\Users\Victor\AppData\Local\Temp\dlight_Victor\21b69025\0640791818\pty
+
+
+se han encontrado 5 duplicados.
