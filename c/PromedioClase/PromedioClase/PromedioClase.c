@@ -48,12 +48,14 @@ int main(int argc, char** argv) {
             }
         }
         
+        printf("\r\n");
+
         //este bucle for sirve para leer la tabala "clase" y por cada estudiante 
         // calcular la media y poner a cada estudiante en una clasificacción
         for(i = 0; i < numero; i++){
-            printf("Alumno numero %d: \t nota 1: %f \t nota 2: %f \t", i+1, clase[i][1], clase[i][2]);
+            printf("Alumno numero %d: \t nota 1: %1.2f \t nota 2: %1.2f \t", i+1, clase[i][1], clase[i][2]);
             notaMedia = (clase[i][1] + clase[i][2]) / 2;
-            printf("media: %f \t", notaMedia );
+            printf("media: %1.2f \t", notaMedia );
             
             if( clase[i][1] < 3 || clase[i][2] < 3 ){
                 printf("no promediable\r\n");
@@ -79,11 +81,12 @@ int main(int argc, char** argv) {
         }
     }
     
-    printf("La nota maxima es: %f del alumno %f \r\n", notaMaxima[1], notaMaxima[0]);
-    printf("Alumnos no promediables: %d que es el %f%% \r\n", noPromediables, (float)noPromediables/numero*100 );
-    printf("Alumnos suspendidos: %d que es el %f%% \r\n", suspensos, (float)suspensos/numero*100 );
-    printf("Alumnos dudosos: %d que es el %f%% \r\n", dudosos, (float)dudosos/numero*100 );
-    printf("Alumnos aprobados: %d que es el %f%% \r\n", aprobados, (float)aprobados/numero*100 );
+    printf("\r\n");
+    printf("La nota maxima es: %1.2f del alumno %1.0f \r\n", notaMaxima[1], notaMaxima[0]);
+    printf("Alumnos no promediables: %d que es el %1.2f%% \r\n", noPromediables, (float)noPromediables/numero*100 );
+    printf("Alumnos suspendidos: %d que es el %1.2f%% \r\n", suspensos, (float)suspensos/numero*100 );
+    printf("Alumnos dudosos: %d que es el %1.2f%% \r\n", dudosos, (float)dudosos/numero*100 );
+    printf("Alumnos aprobados: %d que es el %1.2f%% \r\n", aprobados, (float)aprobados/numero*100 );
     
 
     return (EXIT_SUCCESS);
