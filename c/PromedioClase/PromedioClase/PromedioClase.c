@@ -22,9 +22,11 @@ typedef struct alumno alumnoBase;
  */
 int main(int argc, char** argv) {
     float nota, notaMedia;
-    float notaMaxima[2] = {0.0,0.0};
+    alumnoBase notaMaxima;
     int noPromediables = 0, suspensos = 0, dudosos = 0, aprobados = 0;
     int numero;
+    
+    notaMaxima.nota1 = 0;
     
     printf("cuantos alumnos hay en clase? " );    
     scanf("%d", &numero);
@@ -86,15 +88,16 @@ int main(int argc, char** argv) {
                 aprobados++;
             }
             
-            if( notaMaxima[1] < notaMedia ) {
-                notaMaxima[1] = notaMedia;
-                notaMaxima[0] = i;
+            if( notaMaxima.nota1 < notaMedia ) {
+                notaMaxima.nota1 = notaMedia;
+                strcpy(notaMaxima.nombreAlumno, clase[i].nombreAlumno);
+                strcpy(notaMaxima.apellidoAlumno, clase[i].apellidoAlumno);
             }           
         }
     }
     
     printf("\r\n");
-    printf("La nota maxima es: %1.2f del alumno %1.0f \r\n", notaMaxima[1], notaMaxima[0]);
+    printf("La nota maxima es: %1.2f del alumno %s %s \r\n", notaMaxima.nota1, notaMaxima.nombreAlumno, notaMaxima.apellidoAlumno);
     printf("Alumnos no promediables: %d que es el %1.2f%% \r\n", noPromediables, (float)noPromediables/numero*100 );
     printf("Alumnos suspendidos: %d que es el %1.2f%% \r\n", suspensos, (float)suspensos/numero*100 );
     printf("Alumnos dudosos: %d que es el %1.2f%% \r\n", dudosos, (float)dudosos/numero*100 );
