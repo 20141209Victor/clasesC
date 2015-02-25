@@ -9,14 +9,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ * struct es la palabra clave que sirve para crear un registro 
+ * al cual opcionalmente se puede dar un nombre
+ */
 struct alumno{
     char nombreAlumno[20];
     char apellidoAlumno[20];
     float nota1;
     float nota2;
 };
+/* El typedef sirve para crear una nueva palabra clave para los tipos de datos
+ * que se quieren declarar
+ */
 typedef struct alumno alumnoBase;
 
+/* juntando typedef struct es inutil dar un nombre al registro y se declara 
+ * directamente la palabra clave del los tipos de datos que se quieren declarar
+ */
 typedef struct {
     int noPromediables;
     int suspensos;
@@ -27,7 +37,47 @@ typedef struct {
     float notaMax;
 }resultados;
 
+/* esta es la declaricion de una funcion que se detallara luego
+ */
 resultados funcionBeta(int numero);
+
+alumnoBase *introducirDatos(int numero) {
+    int i = 0;
+    //la tabla "clase" y la variable "i" seran validas solo dentro de la llaves donde estan declaradas
+    alumnoBase *clase; //Se puede acceder a los campos de la clase escribiendo "clase[fila].nombreAlumno"
+    
+    clase = (alumnoBase *) malloc( numero * sizeof(alumnoBase) );
+    
+    //este bucle for sirve para pedir al usuario todas las notas y rellenar con estos valores la tabla "clase"
+    for(i = 0; i < numero; i++) {
+        printf("introduzca el nombre del alumno: ");
+        scanf("%s",clase[i].nombreAlumno);
+        printf("introduzca el apellido del alumno: ");
+        scanf("%s",clase[i].apellidoAlumno);
+
+        printf("introducir la 1ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
+        scanf("%f", &clase[i].nota1);
+        // introducimos un controL de errores de insercion
+        while( clase[i].nota1 < 0 || clase[i].nota1 > 10) {
+            printf("      valor incorrecto \r\n");
+            printf("introducir la 1ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
+            scanf("%f", &clase[i].nota1);
+        }
+
+        printf("introducir la 2ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
+        scanf("%f", &clase[i].nota2);
+        // introducimos un contror de errores de insercion
+        while( clase[i].nota2 < 0 || clase[i].nota2 > 10) {
+            printf("      valor incorrecto \r\n");
+            printf("introducir la 2ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
+            scanf("%f", &clase[i].nota2);
+        }
+    }
+
+    printf("\r\n");
+    
+    return clase;
+}
 
 /*
  * 
@@ -70,38 +120,11 @@ int main(int argc, char** argv) {
 resultados funcionBeta(int numero) {
     resultados calculos = {0,0,0,0,"","",0};
     float notaMedia;
-    //la tabla "clase" y la variable "i" seran validas solo dentro de la llaves donde estan declaradas
-    alumnoBase clase[numero]; //Se puede acceder a los campos de la clase escribiendo "clase[fila].nombreAlumno"
     int i = 0;
-
-    //este bucle for sirve para pedir al usuario todas las notas y rellenar con estos valores la tabla "clase"
-    for(i = 0; i < numero; i++) {
-        printf("introduzca el nombre del alumno: ");
-        scanf("%s",clase[i].nombreAlumno);
-        printf("introduzca el apellido del alumno: ");
-        scanf("%s",clase[i].apellidoAlumno);
-
-        printf("introducir la 1ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
-        scanf("%f", &clase[i].nota1);
-        // introducimos un controL de errores de insercion
-        while( clase[i].nota1 < 0 || clase[i].nota1 > 10) {
-            printf("      valor incorrecto \r\n");
-            printf("introducir la 1ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
-            scanf("%f", &clase[i].nota1);
-        }
-
-        printf("introducir la 2ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
-        scanf("%f", &clase[i].nota2);
-        // introducimos un contror de errores de insercion
-        while( clase[i].nota2 < 0 || clase[i].nota2 > 10) {
-            printf("      valor incorrecto \r\n");
-            printf("introducir la 2ª nota del alumno %s %s -> ", clase[i].nombreAlumno, clase[i].apellidoAlumno);
-            scanf("%f", &clase[i].nota2);
-        }
-    }
-
-    printf("\r\n");
-
+    alumnoBase *clase;
+    
+    clase = introducirDatos(numero);
+    
     //este bucle for sirve para leer la tabala "clase" y por cada estudiante 
     // calcular la media y poner a cada estudiante en una clasificacción
     for(i = 0; i < numero; i++){
@@ -133,5 +156,6 @@ resultados funcionBeta(int numero) {
         }           
     }
     
+    free(clase);
     return calculos;
 }
