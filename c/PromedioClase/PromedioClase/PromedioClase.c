@@ -39,72 +39,23 @@ typedef struct {
 
 /* esta es la declaricion de una funcion que se detallara luego
  */
-resultados funcionBeta(int numero);
 alumnoBase *introducirDatos(int numero);
-
-resultados ejecutarCalculos(alumnoBase *tabla, int numero) {
-    int i = 0;
-    float notaMedia;
-    resultados calculos = {0,0,0,0,"","",0};
-        
-    //este bucle for sirve para leer la tabala "clase" y por cada estudiante 
-    // calcular la media y poner a cada estudiante en una clasificacción
-    for(i = 0; i < numero; i++){
-        printf("Alumno %s %s: \t nota 1: %1.2f \t nota 2: %1.2f \t", tabla[i].nombreAlumno, tabla[i].apellidoAlumno, tabla[i].nota1, tabla[i].nota2); 
-        notaMedia = (tabla[i].nota1 + tabla[i].nota2) / 2;
-        printf("media: %1.2f \t", notaMedia );
-
-        if( tabla[i].nota1 < 3 || tabla[i].nota2 < 3 ){
-            printf("no promediable\r\n");
-            calculos.noPromediables++;
-        }
-        else if( notaMedia < 4 ){
-            printf("suspenso\r\n");
-            calculos.suspensos++; 
-        }
-        else if( notaMedia < 5 ){
-            printf("dudoso\r\n");
-            calculos.dudosos++;
-        }
-        else {
-            printf("aprobado\r\n");
-            calculos.aprobados++;
-        }
-
-        if( calculos.notaMax < notaMedia ) {
-            calculos.notaMax = notaMedia;
-            strcpy(calculos.nombreAlumnoMax, tabla[i].nombreAlumno);
-            strcpy(calculos.apellidoAlumnoMax, tabla[i].apellidoAlumno);
-        }           
-    }
-    return calculos;
-}
-
+resultados ejecutarCalculos(alumnoBase *tabla, int numero);
 
 /*
  * 
  */
 int main(int argc, char** argv) {
     int numero;
-    resultados paraImprimir;
+    resultados paraImprimir = {0,0,0,0,"","",0};
+    alumnoBase *clase;
 
     printf("cuantos alumnos hay en clase? " );    
     scanf("%d", &numero);
     
-    paraImprimir = funcionBeta(numero);
+    // paraImprimir = funcionBeta(numero);
+    clase = introducirDatos(numero);
     
-    printf("\r\n");
-    printf("La nota maxima es: %1.2f del alumno %s %s \r\n", paraImprimir.notaMax, paraImprimir.nombreAlumnoMax, paraImprimir.apellidoAlumnoMax);
-    printf("Alumnos no promediables: %d que es el %1.2f%% \r\n", paraImprimir.noPromediables, (float)paraImprimir.noPromediables/numero*100 );
-    printf("Alumnos suspendidos: %d que es el %1.2f%% \r\n", paraImprimir.suspensos, (float)paraImprimir.suspensos/numero*100 );
-    printf("Alumnos dudosos: %d que es el %1.2f%% \r\n", paraImprimir.dudosos, (float)paraImprimir.dudosos/numero*100 );
-    printf("Alumnos aprobados: %d que es el %1.2f%% \r\n", paraImprimir.aprobados, (float)paraImprimir.aprobados/numero*100 );
-    
-
-    return (EXIT_SUCCESS);
-}
-
-
 /*
  * param numero; es el numero de alumnos de la clase
  *      en base de alumnos que hay por clase se crea un tabla de cada alumno con sus dos notas
@@ -119,17 +70,20 @@ int main(int argc, char** argv) {
         resultados.notaMax           float
  * 
  */
-resultados funcionBeta(int numero) {
-    resultados calculos = {0,0,0,0,"","",0};
-    alumnoBase *clase;
-    
-    clase = introducirDatos(numero);
-    
-    calculos = ejecutarCalculos(clase, numero);
-
+    paraImprimir = ejecutarCalculos(clase, numero);
     free(clase);
-    return calculos;
+    
+    printf("\r\n");
+    printf("La nota maxima es: %1.2f del alumno %s %s \r\n", paraImprimir.notaMax, paraImprimir.nombreAlumnoMax, paraImprimir.apellidoAlumnoMax);
+    printf("Alumnos no promediables: %d que es el %1.2f%% \r\n", paraImprimir.noPromediables, (float)paraImprimir.noPromediables/numero*100 );
+    printf("Alumnos suspendidos: %d que es el %1.2f%% \r\n", paraImprimir.suspensos, (float)paraImprimir.suspensos/numero*100 );
+    printf("Alumnos dudosos: %d que es el %1.2f%% \r\n", paraImprimir.dudosos, (float)paraImprimir.dudosos/numero*100 );
+    printf("Alumnos aprobados: %d que es el %1.2f%% \r\n", paraImprimir.aprobados, (float)paraImprimir.aprobados/numero*100 );
+    
+
+    return (EXIT_SUCCESS);
 }
+
 
 alumnoBase *introducirDatos(int numero) {
     int i = 0;
@@ -167,4 +121,42 @@ alumnoBase *introducirDatos(int numero) {
     printf("\r\n");
     
     return clase;
+}
+
+resultados ejecutarCalculos(alumnoBase *tabla, int numero) {
+    int i = 0;
+    float notaMedia;
+    resultados calculos = {0,0,0,0,"","",0};
+        
+    //este bucle for sirve para leer la tabala "clase" y por cada estudiante 
+    // calcular la media y poner a cada estudiante en una clasificacción
+    for(i = 0; i < numero; i++){
+        printf("Alumno %s %s: \t nota 1: %1.2f \t nota 2: %1.2f \t", tabla[i].nombreAlumno, tabla[i].apellidoAlumno, tabla[i].nota1, tabla[i].nota2); 
+        notaMedia = (tabla[i].nota1 + tabla[i].nota2) / 2;
+        printf("media: %1.2f \t", notaMedia );
+
+        if( tabla[i].nota1 < 3 || tabla[i].nota2 < 3 ){
+            printf("no promediable\r\n");
+            calculos.noPromediables++;
+        }
+        else if( notaMedia < 4 ){
+            printf("suspenso\r\n");
+            calculos.suspensos++; 
+        }
+        else if( notaMedia < 5 ){
+            printf("dudoso\r\n");
+            calculos.dudosos++;
+        }
+        else {
+            printf("aprobado\r\n");
+            calculos.aprobados++;
+        }
+
+        if( calculos.notaMax < notaMedia ) {
+            calculos.notaMax = notaMedia;
+            strcpy(calculos.nombreAlumnoMax, tabla[i].nombreAlumno);
+            strcpy(calculos.apellidoAlumnoMax, tabla[i].apellidoAlumno);
+        }           
+    }
+    return calculos;
 }
