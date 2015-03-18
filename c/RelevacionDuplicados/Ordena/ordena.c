@@ -13,6 +13,19 @@
 
 int PedirCadenas (char **lista, int numero);
 
+void OrdenarCadenas(char **lista, int numero) {
+    int i;
+    char *temporal;
+    
+    for(i = 0; i < numero-1; i++) {
+        if( strcmp( lista[i], lista[i+1] ) > 0 ) {
+            temporal = lista[i+1];
+            lista[i+1] = lista[i];
+            lista[i] = temporal;
+        }
+    }
+}
+
 /*
  * 
  */
@@ -71,3 +84,5 @@ int PedirCadenas (char **lista, int numero) {
     
     return i;
 }
+
+
